@@ -8,6 +8,7 @@ public class Direccion {
     private String comunidad;
 
     public Direccion() {
+        
     }
 
     public Direccion(String calle, int codPostal, String provincia, String comunidad) {

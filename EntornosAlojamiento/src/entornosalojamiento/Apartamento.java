@@ -13,8 +13,10 @@ public class Apartamento extends Alojamiento {
 
     private int numPlazas;
     private boolean limpieza;
+    private double tarifaDiaPlaza;
 
     public Apartamento() {
+        this(5, true, "TestNombreAp", new Direccion(), 5);
     }
 
     public Apartamento(int numPlazas, boolean limpieza, String nombre, Direccion direccion, double valoracionMedia) {
@@ -37,6 +39,10 @@ public class Apartamento extends Alojamiento {
 
     public void setLimpieza(boolean limpieza) {
         this.limpieza = limpieza;
+    }
+
+    public double calcularTarifa(int dias) {
+        return dias * this.tarifaDiaPlaza * this.numPlazas;
     }
 
     @Override

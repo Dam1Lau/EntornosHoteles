@@ -15,6 +15,9 @@ public abstract class Alojamiento {
     private double valoracionMedia;
 
     public Alojamiento() {
+       nombre = "TestName";
+       direccion = new Direccion();
+       valoracionMedia = 5;
     }
 
     public Alojamiento(String nombre, Direccion direccion, double valoracionMedia) {
@@ -46,13 +49,19 @@ public abstract class Alojamiento {
     public void setValoracionMedia(double valoracionMedia) {
         this.valoracionMedia = valoracionMedia;
     }
+    
+    public abstract double calcularTarifa(int dias);
 
     @Override
     public String toString() {
         return "Alojamiento: \n" + "Nombre: " + nombre + ", direccion: " + direccion + ", valoracion media: " + valoracionMedia;
     }
     
-    
+    // que nos diga cuanto cuesta alojarse en ese alojamiento segun si es hotel/apartamento
+    /*
+    Hotel: tiene una tarifa por dia
+    Apartamento: por persona el precio es otro diaPersona
+    */
     
     
 }
