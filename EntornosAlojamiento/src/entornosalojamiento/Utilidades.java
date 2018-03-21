@@ -15,27 +15,6 @@ import java.util.Scanner;
  */
 public class Utilidades {
 
-//    public static Alojamiento crearAlojamiento() {
-//        Alojamiento aloja;
-//        int opcion;
-//        Scanner lector = new Scanner(System.in);
-//        System.out.println("---Introduzca los datos del nuevo alojamiento---");
-//        System.out.println("¿Qué tipo es? 1. Hotel   2. Apartamento");
-//        do {
-//            opcion = lector.nextInt();
-//        } while (opcion != 1 || opcion != 2);
-//        if (opcion == 1) {
-//            System.out.println("Introduce el nombre del hotel:");
-//            StringBuilder servicios;
-//            String nombre;
-//            double tarifa, vmedia;
-//            int categoria;
-//            aloja = new Hotel();
-//        } else {
-//
-//        }
-//        return aloja;
-//    }
 
     public static String pedirNombre() {
         String nombre;
@@ -54,15 +33,93 @@ public class Utilidades {
     public static double pedirValoracion() {
         double valor;
         Scanner lector = new Scanner(System.in);
-        System.out.println("Introduzca la valoración del hotel:");
-        do {
-            valor = lector.nextDouble();
-        } while (!lector.hasNextDouble());
+        System.out.println("Introduzca la valoración:");
 
+        valor = lector.nextDouble();
         return valor;
     }
 
     public static int pedirCategoria() {
+        int category;
+        System.out.println("Introduce la categoría del hotel (1 a 5 Estrellas)");
+        Scanner lector = new Scanner(System.in);
+        do {
+            category = lector.nextInt();
+            if (category < 1 || category > 5) {
+                System.out.println("Lo siento, la categoria solo puede ser de 1 a 5 estrellas. Introduce otra vez la categoria.");
+            }
+        } while (category < 1 || category > 5);
+
         return 1;
+    }
+
+    public static int pedirPlazas() {
+        int plazas;
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Introduzca en numero de plazas:");
+        return plazas = lector.nextInt();
+    }
+
+    public static int pedirDias() {
+        int dias;
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Introduzca el número de días:");
+        return dias = lector.nextInt();
+    }
+
+    public static Direccion crearDireccion() {
+        Direccion dir;
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Introduzca los datos para crear una nueva dirección: ");
+        System.out.println("Calle:");
+        String calle = lector.nextLine();
+        System.out.println("Código Postal: ");
+        int cp = lector.nextInt();
+        System.out.println("Provincia:");
+        String prov = lector.nextLine();
+        lector.next();
+        System.out.println("Comunidad:");
+        String com = lector.nextLine();
+        lector.next();
+        return dir = new Direccion(calle, cp, prov, com);
+    }
+
+    public static Alojamiento crearAlojamiento() {
+        Scanner lector = new Scanner(System.in);
+        Alojamiento aloja = null;
+        int opcion;
+        System.out.println("Creación de alojamiento. \n Pulse 1 Si quiere crear un hotel. \n Pulse 2 si quiere crear un apartamento. ");
+
+        opcion = lector.nextInt();
+
+        if (opcion == 1) {
+            int categoria = pedirCategoria();
+            System.out.println("Introduzca los servicios del hotel:");
+            StringBuilder servicios = new StringBuilder(lector.nextLine());
+            lector.next();
+            String nombre = pedirNombre();
+            Direccion dir = crearDireccion();
+            double valor = pedirValoracion();
+            System.out.println("Introduzca la tarifa del hotel:");
+            double tarifa = lector.nextDouble();
+            aloja = new Hotel(categoria, servicios, nombre, dir, valor, tarifa);
+        } else {
+            String resp;
+            boolean hayLimpieza;
+            int plazas = pedirPlazas();
+            System.out.println("¿Hay servicio de limpieza? (si/no)");
+            resp = lector.nextLine();
+            if (resp.equalsIgnoreCase("si")) {
+                hayLimpieza = true;
+            } else {
+                hayLimpieza = false;
+            }
+            lector.next();
+            String nom = pedirNombre();
+            Direccion dire = crearDireccion();
+            double media = pedirValoracion();
+            aloja = new Apartamento(plazas, hayLimpieza, nom, dire, media);
+        }
+        return aloja;
     }
 }

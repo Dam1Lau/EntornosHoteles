@@ -48,9 +48,9 @@ public class Apartamento extends Alojamiento {
     @Override
     public String toString() {
         if (limpieza) {
-            return "Apartamento con" + numPlazas + " plazas, y servicio de limpieza incluido";
+            return "Apartamento con " + numPlazas + " plazas, y servicio de limpieza incluido" + super.toString();
         } else {
-            return "Apartamento con" + numPlazas + " plazas y sin servicio de limpieza.";
+            return "Apartamento con " + numPlazas + " plazas y sin servicio de limpieza." + super.toString();
         }
     }
 

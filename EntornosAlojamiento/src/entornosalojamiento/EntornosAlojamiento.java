@@ -16,6 +16,12 @@ public class EntornosAlojamiento {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        Gestor Uno = new Gestor();
+        System.out.println("=====================\n OPCIONES: \n  1. Añadir alojamiento\n  2. Listar Apartamentos \n  3. Consultar Alojamientos");
+        Uno.anadirAlojamiento(Utilidades.crearAlojamiento());
+        Uno.listarApartamentos(Utilidades.pedirPlazas());
+        
     }
     
 }

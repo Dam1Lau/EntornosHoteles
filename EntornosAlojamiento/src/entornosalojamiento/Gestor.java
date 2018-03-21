@@ -23,9 +23,11 @@ public class Gestor {
 //        this.alojamientos = alojamientos;
 //    }   Para que no nos dejen a null los alojamientos, quitaremos el set.
     public void anadirAlojamiento(Alojamiento alojamiento) {
-        for (int i = 0; i < alojamientos.length; i++) {
+        boolean anadido = false;
+        for (int i = 0; i < alojamientos.length && anadido == false; i++) {
             if (alojamientos[i] == null) {
                 alojamientos[i] = alojamiento;
+                anadido = true;
             } else {
                 System.out.println("No se ha podido añadir el alojamiento. No hay espacio.");
             }
@@ -98,4 +100,13 @@ public class Gestor {
         }
         return pelas;
     }
+
+    @Override
+    public String toString() {
+        return "Gestor{" + "alojamientos=" + alojamientos + '}';
+    }
+    
+    
+    
+    
 }

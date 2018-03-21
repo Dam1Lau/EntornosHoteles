@@ -54,7 +54,7 @@ public abstract class Alojamiento {
 
     @Override
     public String toString() {
-        return "Alojamiento: \n" + "Nombre: " + nombre + ", direccion: " + direccion + ", valoracion media: " + valoracionMedia;
+        return "\n" + "Nombre: " + nombre +", valoracion media: " + valoracionMedia + direccion;
     }
     
     // que nos diga cuanto cuesta alojarse en ese alojamiento segun si es hotel/apartamento
